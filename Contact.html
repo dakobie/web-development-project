@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+    <style>
+         a:link {
+            color: white;
+            background-color: transparent;
+            text decoration: none;
+            }
+
+            a:visited {
+              color: white;
+              background-color: transparent;
+              text-decoration: none;
+            }
+
+            a:hover {
+              color: white;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+
+            a:active {
+              color: white;
+              background-color: transparent;
+              text-decoration: underline;
+            }
+        body{
+        background: #203354;
+        
+         font-family: "Anta", sans-serif;
+         margin:auto;
+
+        }
+        .container{
+        width:70%;
+        margin: auto;
+        }
+        .contact-box{
+        background:gray;
+        display:flex;
+        }
+        .contact-left{
+        flex-basis:60%;
+        padding: 40px 60px;
+
+       }
+       .contact-right{
+        flex-basis:40%;
+        padding: 40px;
+        background: white;
+        color:black;
+
+       }
+       h1{
+       text-align:center;
+       margin-bottom: 10 px;
+       background-color: gray;
+            font-color:black;
+            font-size:200%;
+            border: 10px solid black;
+
+
+         
+            position: relative;
+            display: block;
+       }
+    .container p{
+        margin-bottom: 40 px;
+    }
+    .container nav{
+    text-align:center;
+    }
+
+       .input-row{
+        display:flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+       }
+        .input-row.input-group{
+    felx-basis: 45%;
+
+        }
+        input{
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid #ccc;
+        
+        padding-bottom: 5px;
+        }
+        textarea{
+        width: 100%;
+        border: 1px solid black;
+        outline: none;
+        padding: 10px;
+        }
+        label{
+        margin-bottom: 6px;
+        display: block;
+        }
+        button{
+            background: #203354;
+            width: 100px;
+            border: none;
+            outline: none;
+            color: white;
+            height: 40px;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+        .contact-left h3{
+        font-weight: 600;
+        margin-bottom: 30px
+        
+
+        }
+        .contact-right h3{
+        font-weight: 600;
+        margin-bottom: 30px
+
+
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+<br><br>
+<div class="container">
+    <h1>Contact</h1>
+    <hr>
+    <nav> <h3>
+        <a href="file:///C:/Users/Owner/Web%20Development/index.html">Home</a>
+
+        <a href="file:///C:/Users/Owner/Web%20Development/About.html">About</a>
+
+        <a href="file:///C:/Users/Owner/Web%20Development/Contact.html">Contact</a>
+
+    </h3></nav>
+    <p>I would love for any questions</p>
+       <div class="contact-box">
+        <div class="contact-left">
+        <h3>Send your request</h3>
+            <form onsubmit="sendEmail(); reset(); return false;">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Name</label>
+                        <input type="text" placeholder="Jane Doe">
+
+                    </div>
+                    <div class="input-group">
+                        <label>Phone</label>
+                        <input type="text" placeholder="0102909029">
+                       
+
+                    </div>
+
+
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="you@gmail.com">
+
+                    </div>
+                    <div class="input-group">
+                        <label>Subject</label>
+                        <input type="text" placeholder="Suggestions">
+
+                    </div>
+
+
+                </div>
+                <label>Message</label>
+                <textarea rows="5" placeholder="Your Message"></textarea>
+                <button type="submit">SEND</button>
+                
+            </form>
+
+        </div>
+           <script src="https://smtpjs.com/v3/smtp.js"></script>
+           <script>
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const jsonData = {};
+            for (const [key, value] of formData.entries()) {
+                jsonData[key] = value;
+            }
+            fetch('/submit-contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert(data.message);
+                this.reset();
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+           </script>
+
+        <div class="contact-right">
+        <h3>Reach me at</h3>
+                <p>You can reach me at any of these listed:</p>
+                    <ul>
+                        <li>Email: dakobie@gmail.com</li>
+                        <li>Phone: 478-DAKOBIE</li>
+                        <li>Instagram: @__Dakobie</li>
+
+                    </ul>
+            <p>Please feel free to reach out during the prime hours of 12am-4am M,T,W,Th,F</p>
+        </div></div>
+</div>
+</body>
